@@ -2,32 +2,25 @@ name: C++ CI
 
 on:
   push:
-    branches: [ main, lab* ]
   pull_request:
-    branches: [ main ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Install dependencies
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y cmake g++ gcc libgtest-dev
-        cd /usr/src/gtest
-        sudo cmake .
-        sudo make
-        sudo cp lib/*.a /usr/lib
+      - name: Install dependencies
+        run: sudo apt-get update && sudo apt-get install -y cmake g++ libgtest-dev
 
-    - name: Configure project
-      run: cmake -S . -B build
-
-    - name: Build project
-      run: cmake --build build
-
-    - name: Run tests
-      run: ctest --test-dir build --output-on-failure
+      - name: Build and test all labs
+        run: |
+          for dir in lab*; do
+            if [ -d "$dir" ] && [ -f "$dir/CMakeLists.txt" ]; then
+              echo "=== Building and testing $dir ==="
+              cmake -S "$dir" -B "$dir/build"
+              cmake --build "$dir/build"
+              ctest --test-dir "$dir/build"
+            fi
+          done
