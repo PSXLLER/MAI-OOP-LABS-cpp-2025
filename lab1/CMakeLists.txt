@@ -37,5 +37,5 @@ add_executable(palindrome_test palindrome_test.cpp palindrome.cpp)
 target_link_libraries(palindrome_test GTest::GTest GTest::Main pthread)
 
 # Регистрируем тест под именем "PalindromeTests"
-# Теперь можно запускать его через "ctest" или в IDE
+# Теперь можно запускать его через "ctest" или даже в IDE
 add_test(NAME PalindromeTests COMMAND palindrome_test)
