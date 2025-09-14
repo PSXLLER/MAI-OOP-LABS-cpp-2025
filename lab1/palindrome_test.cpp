@@ -25,12 +25,4 @@ TEST(PalindromeTest, NotPalindrome) {
     EXPECT_FALSE(IsWordPalindrome("benzo"));
 }
 
-// --------------------
-// Точка входа для GoogleTest
-// --------------------
-// Здесь запускается "тестовый раннер" GoogleTest.
-// Он автоматически выполнит все TEST(...) выше
-int main(int argc, char **argv) {
-    ::testing::InitGoogleTest(&argc, argv);  // инициализация фреймворка
-    return RUN_ALL_TESTS();                  // запуск всех тестов
-}
+
