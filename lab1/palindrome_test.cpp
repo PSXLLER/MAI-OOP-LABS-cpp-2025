@@ -20,7 +20,7 @@ TEST(PalindromeTest, SimplePalindrome) {
     EXPECT_TRUE(IsWordPalindrome("level"));
 }
 
-// Тест 4: слово, которое не является палиндромом ("benzo")
+// Тест 4: слово, которое не является палиндромом ("benzogang")
 TEST(PalindromeTest, NotPalindrome) {
     EXPECT_FALSE(IsWordPalindrome("benzo"));
 }
