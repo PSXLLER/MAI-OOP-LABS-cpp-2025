@@ -1,27 +1,25 @@
-#include "palindrome.h"  // подключаем заголовок, где объявлена функция
+#include "palindrome.h"  
 
-// Функция проверяет, является ли строка палиндромом
-// Палиндром — это строка, которая одинаково читается слева направо и справа налево
-bool IsWordPalindrome(const std::string& word) {
-    // если строка пустая — считаем её палиндромом
-    if (word.empty()) return true;
+bool IsWordPalindrome(const std::string& word) 
+{
+    if (word.empty()) 
+    {
+        return true;
+    }
 
-    // два указателя: один с начала строки, другой с конца
     size_t left = 0;
     size_t right = word.size() - 1;
 
-    // двигаем указатели навстречу друг другу
     while (left < right) 
     {
-        // если символы на позициях left и right разные — это не палиндром
-        if (word[left] != word[right]) return false;
+        if (word[left] != word[right]) 
+        {
+            return false;
+        }
         
-        // смещаем левый указатель вправо
         left++;
-        // смещаем правый указатель влево
         right--;
     }
-
-    // если все пары символов совпали — это палиндром
+    
     return true;
 }
